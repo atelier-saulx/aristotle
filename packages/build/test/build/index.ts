@@ -2,10 +2,10 @@ import test from 'ava'
 import build from '../../src'
 import { join } from 'path'
 
-test.serial.only('build', async t => {
+test.serial.only('build', async (t) => {
   const { js, files, dependencies } = await build({
     entryPoints: [join(__dirname, 'app.tsx')],
-    external: ['redis']
+    external: ['redis'],
   })
 
   const txt = js[0].text
@@ -15,9 +15,9 @@ test.serial.only('build', async t => {
   t.is(Object.keys(files).length, 5)
 })
 
-test.serial('build error handling', async t => {
+test.serial('build error handling', async (t) => {
   const { errors } = await build({
-    entryPoints: [join(__dirname, 'error.tsx')]
+    entryPoints: [join(__dirname, 'error.tsx')],
   })
 
   t.true(Array.isArray(errors))
