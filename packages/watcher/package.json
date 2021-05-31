@@ -11,7 +11,7 @@
     "get-port": "5.1.1",
     "internal-ip": "^6.2.0",
     "murmurhash-native": "^3.5.0",
-    "ws": "^7.4.2",
+    "ws": "^7.4.6",
     "escape-html": "^1.0.3",
     "source-map": "^0.7.3"
   },
