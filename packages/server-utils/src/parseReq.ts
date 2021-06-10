@@ -45,14 +45,39 @@ export default (req: http.IncomingMessage, isSsl: boolean): ParsedReq => {
       pathname: parsedUrl.pathname,
       search: parsedUrl.search,
       hash: parsedUrl.hash,
-      searchParams: paramsToObject(parsedUrl.searchParams)
+      searchParams: paramsToObject(parsedUrl.searchParams),
     },
     language,
     ip: req.socket.remoteAddress,
     method: req.method,
     es5browser: false,
     headers: { ...req.headers },
-    ua: uaParser(req.headers['user-agent'])
+    ua: uaParser(req.headers['user-agent']),
+  }
+
+  if (req.method === 'POST') {
+    // @ts-ignore
+    return new Promise((resolve) => {
+      const chunks = []
+      let received = 0
+
+      req.on('data', (chunk) => {
+        received += chunk.length
+        if (received <= 2056) {
+          chunks.push(chunk)
+        }
+      })
+
+      req.on('end', () => {
+        // @ts-ignore
+        parsed.data = Buffer.concat(chunks)
+        resolve(parsed)
+      })
+
+      req.on('error', () => {
+        resolve(parsed)
+      })
+    })
   }
 
   return parsed

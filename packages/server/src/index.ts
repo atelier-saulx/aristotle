@@ -9,7 +9,7 @@ import {
   serve,
   genRenderOpts,
   genServeFromFile,
-  genServeFromRender
+  genServeFromRender,
 } from '@saulx/aristotle-server-utils'
 import getSsl from '@saulx/ops-get-ssl'
 import https from 'https'
@@ -32,7 +32,7 @@ const createServer = async ({
   buildResult,
   buildJson,
   renderer,
-  cacheFunction
+  cacheFunction,
 }: ServerOpts) => {
   // @ts-ignore pretty strange it does have types...
   const ssl = getSsl()
@@ -59,7 +59,7 @@ const createServer = async ({
     ts = Date.now()
     for (let key in cache) {
       if (cache[key].ts + cache[key].result.memCache * 1e3 < ts) {
-        cache[key].refs.forEach(v => {
+        cache[key].refs.forEach((v) => {
           delete cachedPaths[v]
         })
         delete cache[key]
@@ -76,7 +76,7 @@ const createServer = async ({
     if (file) {
       serve(req, res, genServeFromFile(file))
     } else {
-      const parsedReq = parseReq(req, false)
+      const parsedReq = await parseReq(req, false)
       let result: ServeResult
       const cacheKey = cacheFunction(parsedReq)
       const checksum = cacheKey && cachedPaths[cacheKey]
@@ -96,7 +96,7 @@ const createServer = async ({
               cache[result.checksum] = {
                 ts,
                 result: result,
-                refs: new Set()
+                refs: new Set(),
               }
             }
             cachedPaths[cacheKey] = result.checksum

@@ -222,7 +222,7 @@ export default async ({
     if (file) {
       serve(req, res, genServeFromFile(file))
     } else {
-      const parsedReq = parseReq(req, false)
+      const parsedReq = await parseReq(req, false)
       let result: ServeResult
       let bErrors = serverBuildErrors || buildErrors
       if (bErrors) {
