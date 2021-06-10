@@ -2,7 +2,7 @@
   "name": "@saulx/aristotle-server-utils",
   "main": "./dist/index.js",
   "public": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "build": "rm -rf ./dist && tsc",
     "watch": "tsc --watch"

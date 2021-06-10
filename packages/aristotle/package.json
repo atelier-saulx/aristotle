@@ -1,12 +1,12 @@
 {
   "name": "@saulx/aristotle",
-  "version": "3.0.16",
+  "version": "3.0.17",
   "dependencies": {
     "commander": "^7.0.0",
     "chalk": "^4.1.0",
     "@saulx/aristotle-build": "^1.0.15",
-    "@saulx/aristotle-watcher": "^1.0.16",
-    "@saulx/aristotle-create-server-dist": "^1.0.16",
+    "@saulx/aristotle-watcher": "^1.0.17",
+    "@saulx/aristotle-create-server-dist": "^1.0.17",
     "@saulx/get-package": "^1.0.7",
     "expand-home-dir": "^0.0.3"
   },

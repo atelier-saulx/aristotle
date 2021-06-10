@@ -2,7 +2,7 @@
   "name": "@saulx/aristotle-server",
   "main": "./dist/index.js",
   "public": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "build": "rm -rf ./dist && tsc",
     "watch": "tsc --watch",
@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "chalk": "^4.1.0",
-    "@saulx/aristotle-server-utils": "^1.0.1",
+    "@saulx/aristotle-server-utils": "^1.0.2",
     "@saulx/aristotle-types": "^1.0.0",
     "@saulx/ops-get-ssl": "^1.0.1"
   }
